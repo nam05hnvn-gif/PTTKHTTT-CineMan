@@ -14,10 +14,10 @@ public class Showtime4 {
     private ScreeningRoom4 screeningRoom;
     private List<SeatPrice4> seatPrices;
 
-    public BigDecimal getPrice(SeatType4 seatType4) {
-        if (seatPrices != null && seatType4 != null) {
+    public BigDecimal getPrice(SeatType4 seatType) {
+        if (seatPrices != null && seatType != null) {
             for (SeatPrice4 sp : seatPrices) {
-                if (sp.getSeatType() != null && sp.getSeatType().getId().equals(seatType4.getId())) {
+                if (sp.getSeatType() != null && sp.getSeatType().getId().equals(seatType.getId())) {
                     return sp.getPrice();
                 }
             }
