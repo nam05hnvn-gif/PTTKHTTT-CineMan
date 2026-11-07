@@ -27,6 +27,9 @@ public class Showtime4DAO extends DAO4 {
                 + "JOIN tblMovie4 m ON m.id = s.tblMovie4id "
                 + "JOIN tblScreeningRoom4 r ON r.id = s.tblScreeningRoom4id "
                 + "WHERE s.tblMovie4id = ? AND s.showDate >= CURDATE() "
+                + "AND s.showDate >= m.releaseDate AND s.showDate <= m.endDate "
+                + "AND (s.showDate > CURDATE() OR s.startTime > CURTIME()) "
+                + "AND r.roomStatus = 'active' "
                 + "ORDER BY s.showDate, s.startTime";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, movieId);

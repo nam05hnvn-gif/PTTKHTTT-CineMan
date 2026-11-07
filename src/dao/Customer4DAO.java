@@ -63,7 +63,7 @@ public class Customer4DAO extends DAO4 {
             + "FROM tblUser4 u "
             + "JOIN tblCustomer4 c ON c.tblUser4id = u.id "
             + "LEFT JOIN tblMemberCard4 m ON m.membershipCode = c.tblMemberCard4membershipCode "
-            + "WHERE m.membershipCode = ?";
+            + "WHERE m.membershipCode = ? AND u.role = 'customer' AND u.accountStatus = 'active'";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, membershipCode);
             try (ResultSet rs = ps.executeQuery()) {

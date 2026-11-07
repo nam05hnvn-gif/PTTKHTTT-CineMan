@@ -17,10 +17,10 @@ public class Movie4DAO extends DAO4 {
     public List<Movie4> searchMovies(String keyword) {
         List<Movie4> list = new ArrayList<>();
         String sql = "SELECT id, movieTitle, duration, description, director, `cast`, ageRating, releaseDate, endDate, posterImage "
-                + "FROM tblMovie4 ";
+                + "FROM tblMovie4 WHERE releaseDate <= CURDATE() AND endDate >= CURDATE() ";
         boolean hasKeyword = keyword != null && !keyword.trim().isEmpty();
         if (hasKeyword) {
-            sql += "WHERE movieTitle LIKE ? ";
+            sql += "AND movieTitle LIKE ? ";
         }
         sql += "ORDER BY movieTitle";
         try (PreparedStatement ps = con.prepareStatement(sql)) {

@@ -22,7 +22,7 @@ public class Seat4DAO extends DAO4 {
                 + "FROM tblSeat4 se "
                 + "JOIN tblShowtime4 s ON s.tblScreeningRoom4id = se.tblScreeningRoom4id "
                 + "LEFT JOIN tblSeatType4 t ON t.id = se.tblSeatType4id "
-                + "WHERE s.id = ? "
+                + "WHERE s.id = ? AND se.seatStatus = 'available' "
                 + "ORDER BY se.seatRow, se.seatNumber";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, showtimeId);
@@ -81,13 +81,18 @@ public class Seat4DAO extends DAO4 {
     }
 
     public boolean checkSeatAvailability(int seatId, int showtimeId) {
-        String sql = "SELECT COUNT(*) FROM tblMovieTicket4 WHERE tblSeat4id = ? AND tblShowtime4id = ?";
+        String sql = "SELECT (SELECT COUNT(*) FROM tblMovieTicket4 WHERE tblSeat4id = ? AND tblShowtime4id = ?) = 0 "
+                + "AND EXISTS (SELECT 1 FROM tblSeat4 se "
+                + "JOIN tblShowtime4 s ON s.tblScreeningRoom4id = se.tblScreeningRoom4id "
+                + "WHERE se.id = ? AND s.id = ? AND se.seatStatus = 'available')";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, seatId);
             ps.setInt(2, showtimeId);
+            ps.setInt(3, seatId);
+            ps.setInt(4, showtimeId);
             try (ResultSet rs = ps.executeQuery()) {
                 rs.next();
-                return rs.getInt(1) == 0;
+                return rs.getBoolean(1);
             }
         } catch (SQLException e) {
             e.printStackTrace();
