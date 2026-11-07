@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+    <display-name>CineMan</display-name>
+    <welcome-file-list>
+        <welcome-file>main.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>CustomerHome4</servlet-name>
+        <jsp-file>/view/khachhang/CustomerHome4.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerHome4</servlet-name>
+        <url-pattern>/CustomerHome4.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MemberRegistration4</servlet-name>
+        <jsp-file>/view/khachhang/MemberRegistration4.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MemberRegistration4</servlet-name>
+        <url-pattern>/MemberRegistration4.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>doMemberRegistration4</servlet-name>
+        <jsp-file>/view/khachhang/doMemberRegistration4.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>doMemberRegistration4</servlet-name>
+        <url-pattern>/doMemberRegistration4.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AccountInformation4</servlet-name>
+        <jsp-file>/view/khachhang/AccountInformation4.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccountInformation4</servlet-name>
+        <url-pattern>/AccountInformation4.jsp</url-pattern>
+    </servlet-mapping>
+</web-app>

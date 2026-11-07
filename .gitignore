@@ -1,0 +1,3 @@
+/tools/apache-tomcat-11.0.27/
+/webapp/WEB-INF/classes/
+*.class
