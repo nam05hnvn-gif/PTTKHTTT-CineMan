@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class ScreeningRoom4 {
     private Integer id;
     private String roomName;
@@ -7,7 +9,7 @@ public class ScreeningRoom4 {
     private Integer capacity;
     private String description;
     private String roomStatus;
-    private Seat4[] seats;
+    private List<Seat4> seats;
 
     public Integer getId() {
         return id;
@@ -57,11 +59,11 @@ public class ScreeningRoom4 {
         this.roomStatus = roomStatus;
     }
 
-    public Seat4[] getSeats() {
+    public List<Seat4> getSeats() {
         return seats;
     }
 
-    public void setSeats(Seat4[] seats) {
+    public void setSeats(List<Seat4> seats) {
         this.seats = seats;
     }
 }
